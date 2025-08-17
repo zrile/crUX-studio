@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>crUX studio</title>
+<style>
+    :root {
+        --color-bg: #f1f3f4;
+        --color-text: #0f172a;
+        --color-muted: #c3c5d7;         
+        --color-accent: #28a745;		/* crUX zelena */
+        --color-card: #ffffff;
+        --color-red: #dc2626;
+        --color-green: #28a745;
+        --color-green-hover: #00cc33;
+        --shadow-card: 0 2px 10px rgba(0,0,0,0.05);
+        --grad-start: #4791d5;
+        --grad-end: #28a745;
+        --logo-path: light.png;
+		--color-shade:rgba(241,243,245,130);   /*bckgrnd u rgb zapisu radi alpha broja*/
+    }
+    body.dark {
+        --color-bg: #171e37;
+        --color-text: #b8b8b8;
+        --color-muted: #495057;         /* crUX siva */
+        --color-accent: #4791d5;        /* crUX plava */
+        --color-card: #1e293b;
+        --color-red: #f87171;			/* crUX crvena */
+        --color-green: #28a745;
+        --color-green-hover: #00e600;
+        --shadow-card: none;
+        --grad-start: #4791d5;
+        --grad-end: #28a745;
+        --logo-path: dark.png;
+		--color-shade:rgba(24,30,54,130);
+    }
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Roboto, sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    header {
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    header img {
+        height: 50px;
+    }
+	nav {
+        display: flex;
+        align-items: center;
+    }
+    nav a {
+        color: var(--color-text);
+        text-decoration: none;
+        margin-left: 1.5rem;
+        font-weight: 500;
+    }
+    nav a:hover {
+        color: var(--color-accent);
+    }
+    .theme-toggle {
+        margin-left: 1.5rem;
+        background: none;
+        border: none;
+        color: var(--color-text);
+        cursor: pointer;
+        padding: 0.4rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease;
+    }
+    .theme-toggle:hover {
+        background: rgba(0,0,0,0.05);
+    }
+    body.dark .theme-toggle:hover {
+        background: rgba(255,255,255,0.1);
+    }
+    .theme-toggle svg {
+        width: 22px;
+        height: 22px;
+        transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+    .theme-toggle.switching svg {
+        transform: rotate(180deg);
+        opacity: 0;
+    }
+    .hero {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+        padding: clamp(3rem, 8vw, 6rem) 1rem; /* raste s veličinom ekrana */
+		position: relative;
+    }
+    .hero h1 {
+		font-size: clamp(2rem, 6vw, 3.5rem); /* 2rem na mobu, 3.5rem na desktopu */
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+		position: relative;
+    }
+    .hero p {
+        font-size: clamp(1rem, 2.5vw, 1.3rem);
+		max-width: 600px;
+		margin-bottom: 2rem;
+    }
+	.hero button {
+		margin-top: 2rem;
+	}
+
+	#slogan {
+        font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+        position: absolute;
+        /*bottom: -0.5em;*/
+		bottom: 4em;
+        right: -1.3em;
+        white-space: nowrap;
+        font-style: italic;
+		font-weight: 400;
+	}
+
+    .section {
+        padding: 4rem 2rem;
+        max-width: 1100px;
+        margin: auto;
+    }
+    .services, .portfolio {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    .card {
+        background-color: var(--color-card);
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        transition: transform 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card h3 {
+        color: #f87171; /* crUX crvena */
+    }
+    footer {
+        text-align: center;
+        padding: 2rem;
+        font-size: 0.9rem;
+        color: var(--color-muted);
+    }
+    button {
+        background-color: #28a745; /* crUX zelena */
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: var(--color-green-hover); 
+    }
+
+    /* Animacija linije */
+    .flow-line {
+		width: 9em; /* Using em units to scale with h1 font size */		
+		height:auto;
+        max-width: 500px;
+        margin: 0 auto;
+		position: absolute;
+		top: -4em;
+		left: 3em;
+		transform: translateX(-50%);
+		z-index: -1;
+    }
+	
+    .flow-path {
+        fill: none;
+        stroke: url(#lineGradient);
+        stroke-width: 4;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 500;
+        stroke-dashoffset: 500;
+        animation: drawErase 6s linear infinite;
+    }
+    @keyframes drawErase {
+        0% {
+            stroke-dashoffset: 500;
+        }
+        50% {
+            stroke-dashoffset: 0;
+        }
+        66.66% {
+            stroke-dashoffset: 0;
+        }
+        100% {
+            stroke-dashoffset: -500;
+        }
+    }
+	/* Ovo je ona gnjavaža oko ikone sunce/mjesec */
+	/*#probniSVG svg {
+	  width: 24px;
+	  height: 24px;
+	}*/
+
+
+    /* Hamburger menu styles */
+    .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1002;
+        position: relative;
+        background: none;
+        border: none;
+    }
+    .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--color-text);
+        margin: 3px 0;
+        transition: all 0.3s ease;
+        border-radius: 2px;
+        display: block;
+    }
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Mobile navigation */
+    @media (max-width: 768px) {
+        .hamburger {
+            display: flex;
+        }
+        
+        nav {
+            position: fixed;
+            top: 10vh;
+            right: 0;
+            width: 20%;
+            height: auto;
+			border-radius:3px;
+            background-color: var(--color-bg);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        nav.active {
+            transform: translateX(0);
+			box-shadow: -10px 10px 80px 30px var(--color-shade);
+        }
+        
+        nav a {
+            margin: 1rem 0;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        .theme-toggle {
+            margin: 0.2rem 0 0 0;
+        }
+        
+        nav .theme-toggle svg {
+            width: 28px;
+            height: 28px;
+        }
+    }
+
+</style>
+</head>
+<body>
+
+<header>
+    <img id="logo" alt="crUX studio logo">
+	
+	    <!-- Hamburger menu button -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+	
+    <nav id="menu">
+        <a href="#usluge">Usluge</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#kontakt">Kontakt</a>
+        <button class="theme-toggle" id="themeBtn" aria-label="Promijeni temu">
+            <!-- Ikona će se mijenjati JS-om -->
+        </button>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>crUX studio
+	
+		<div id="slogan">Into the flow.</div>
+		
+		<!-- Animirana linija -->
+		<svg class="flow-line" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+					<stop offset="100%" style="stop-color:#28a745;stop-opacity:1" />
+				</linearGradient>
+			</defs>
+			<path class="flow-path" d="M50 250 L80 220 L60 190 L100 160 Q140 130, 180 140 Q220 150, 260 140 Q300 130, 340 120" />
+		</svg>
+		
+	</h1>
+	
+    <p>Kreiramo intuitivna i privlačna korisnička iskustva koja ostavljaju dojam.</p>
+
+
+
+    <button>Kontaktiraj nas</button>
+</section>
+
+<section id="usluge" class="section">
+    <h2>Naše usluge</h2>
+    <div class="services">
+        <div class="card">
+            <h3>UX Istraživanje</h3>
+            <p>Analiza potreba korisnika i optimizacija putanje iskustva.</p>
+        </div>
+        <div class="card">
+            <h3>UI Dizajn</h3>
+            <p>Estetski i funkcionalni sučajni dizajn prilagođen brendu.</p>
+        </div>
+        <div class="card">
+            <h3>Prototipiranje</h3>
+            <p>Interaktivni prototipovi za testiranje i validaciju ideja.</p>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio" class="section">
+    <h2>Portfolio</h2>
+    <div class="portfolio">
+        <div class="card">
+            <h3>Projekt A</h3>
+            <p>Kratak opis projekta i postignutih rezultata.</p>
+        </div>
+        <div class="card">
+            <h3>Projekt B</h3>
+            <p>Kratak opis projekta i postignutih rezultata.</p>
+        </div>
+        <div class="card">
+            <h3>Projekt C</h3>
+            <p>Kratak opis projekta i postignutih rezultata.</p>
+        </div>
+    </div>
+</section>
+
+<section id="kontakt" class="section">
+    <h2>Kontakt</h2>
+    <p>Pošaljite nam poruku i započnimo suradnju!</p>
+    <button>Pošalji upit</button>
+	<!--<button id="probniSVG"></button>-->
+</section>
+</section>
+
+<footer>
+    &copy; 2025 crUX studio – Sva prava pridržana.
+</footer>
+
+<script>
+    const logo = document.getElementById("logo");
+    const themeBtn = document.getElementById("themeBtn");
+	const hamburger = document.getElementById("hamburger");
+    const nav = document.getElementById("menu");
+    /*var currentColor =  getComputedStyle(document.body).getPropertyValue("--color-text").trim();
+	console.log(currentColor)
+	const probniSVG = document.getElementById("probniSVG");
+	probniSVG.innerHTML = sunIcon;*/
+    const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+	const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95-6.95-1.41 1.41M6.46 17.54l-1.41 1.41m0-13.42 1.41 1.41m11.08 11.08 1.41 1.41"/></svg>`;
+
+    // Hamburger menu functionality
+    hamburger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    nav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+        }
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !nav.contains(e.target) && nav.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+        }
+    });
+
+    function applyTheme(dark) {
+        document.body.classList.toggle("dark", dark);
+        logo.src = getComputedStyle(document.body).getPropertyValue("--logo-path").trim();
+
+        themeBtn.classList.add("switching");
+        setTimeout(() => {
+            themeBtn.innerHTML = dark ? sunIcon : moonIcon;
+            themeBtn.classList.remove("switching");
+        }, 200);
+
+        localStorage.setItem("theme", dark ? "dark" : "light");
+    }
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        applyTheme(savedTheme === "dark");
+    } else {
+        applyTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+
+    themeBtn.addEventListener("click", () => {
+        applyTheme(!document.body.classList.contains("dark"));
+    });
+</script>
+
+</body>
+</html>
