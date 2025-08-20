@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>crUX studio</title>
+<link id="favicon" rel="icon" type="image/png" >
 <style>
     :root {
         --color-bg: #f1f3f4;
@@ -18,6 +19,7 @@
         --grad-start: #4791d5;
         --grad-end: #28a745;
         --logo-path: light.png;
+		--favicon-path: lightFavSquare.png;
 		--color-shade:rgba(241,243,245,130);   /*bckgrnd u rgb zapisu radi alpha broja*/
     }
     body.dark {
@@ -33,10 +35,12 @@
         --grad-start: #4791d5;
         --grad-end: #28a745;
         --logo-path: dark.png;
+		--favicon-path: darkFavSquare.png;
 		--color-shade:rgba(24,30,54,130);
     }
     body {
         margin: 0;
+		padding-top: clamp(4rem, 8vw, 5.125rem);
         font-family: 'Segoe UI', Roboto, sans-serif;
         background-color: var(--color-bg);
         color: var(--color-text);
@@ -47,6 +51,21 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+		position: fixed;
+		top: 0;
+        left: 0;
+        right: 0;
+		width: 100%;
+		box-sizing: border-box;
+		background-color: var(--color-bg); 
+		z-index: 1000;
+		box-shadow: var(--shadow-card);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+		
+		
+		
+		
     }
     header img {
         height: 50px;
@@ -119,7 +138,7 @@
         font-size: clamp(0.8rem, 1.5vw, 1.1rem);
         position: absolute;
         /*bottom: -0.5em;*/
-		bottom: 3.5em;
+		bottom: 3.8em;
         right: -1.3em;
         white-space: nowrap;
         font-style: italic;
@@ -211,6 +230,13 @@
 	  height: 24px;
 	}*/
 
+	.gradient-text {
+		background: linear-gradient(90deg, #4a90e2 0%, #28a745 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+	}
 
     /* Hamburger menu styles */
     .hamburger {
@@ -290,9 +316,10 @@
 <body>
 
 <header>
+	<!-- Logo se mijenja JS-om -->
     <img id="logo" alt="crUX studio logo">
 	
-	    <!-- Hamburger menu button -->
+	<!-- Hamburger menu button -->
     <div class="hamburger" id="hamburger">
         <span></span>
         <span></span>
@@ -301,10 +328,10 @@
 	
     <nav id="menu">
         <a href="#usluge">Usluge</a>
-        <a href="#portfolio">Portfolio</a>
+        <!--<a href="#portfolio">Portfolio</a>-->
         <a href="#kontakt">Kontakt</a>
         <button class="theme-toggle" id="themeBtn" aria-label="Promijeni temu">
-            <!-- Ikona će se mijenjati JS-om -->
+            <!-- Ikona se mijenja JS-om -->
         </button>
     </nav>
 </header>
@@ -327,11 +354,11 @@
 		
 	</h1>
 	
-    <p>Kreiramo intuitivna i privlačna korisnička iskustva koja ostavljaju dojam.</p>
+    <p>Kreiramo intuitivna i privlačna korisnička iskustva koja ostavljaju <b><span class="gradient-text">trag</span></b>.</p>
 
 
 
-    <button>Kontaktiraj nas</button>
+    <button>Pošalji upit</button>
 </section>
 
 <section id="usluge" class="section">
@@ -339,19 +366,20 @@
     <div class="services">
         <div class="card">
             <h3>UX Istraživanje</h3>
-            <p>Analiza potreba korisnika i optimizacija putanje iskustva.</p>
+            <p>Analiza potreba korisnika i optimizacija korisničkog iskustva.</p>
         </div>
         <div class="card">
             <h3>UI Dizajn</h3>
-            <p>Estetski i funkcionalni sučajni dizajn prilagođen brendu.</p>
+            <p>Estetski i funkcionalan dizajn sučelja prilagođen brendu.</p>
         </div>
         <div class="card">
             <h3>Prototipiranje</h3>
-            <p>Interaktivni prototipovi za testiranje i validaciju ideja.</p>
+            <p>Interaktivni prototipi za testiranje i validaciju ideja.</p>
         </div>
     </div>
 </section>
 
+<!--
 <section id="portfolio" class="section">
     <h2>Portfolio</h2>
     <div class="portfolio">
@@ -374,9 +402,11 @@
     <h2>Kontakt</h2>
     <p>Pošaljite nam poruku i započnimo suradnju!</p>
     <button>Pošalji upit</button>
+</section>-->
+
 	<!--<button id="probniSVG"></button>-->
-</section>
-</section>
+
+
 
 <footer>
     &copy; 2025 crUX studio – Sva prava pridržana.
@@ -384,6 +414,7 @@
 
 <script>
     const logo = document.getElementById("logo");
+	const favicon = document.getElementById("favicon");
     const themeBtn = document.getElementById("themeBtn");
 	const hamburger = document.getElementById("hamburger");
     const nav = document.getElementById("menu");
@@ -417,11 +448,24 @@
             nav.classList.remove('active');
         }
     });
+	
+	
+	// favicon priprema
+	function updateFavicon(path) {
+    if (favicon) {
+        favicon.href = path;
+    }
+	}
+	
 
     function applyTheme(dark) {
         document.body.classList.toggle("dark", dark);
+		// promjena loga
         logo.src = getComputedStyle(document.body).getPropertyValue("--logo-path").trim();
+		// promjena favicona
+		updateFavicon(getComputedStyle(document.body).getPropertyValue("--favicon-path").trim());
 
+		// animacija gumba za temu
         themeBtn.classList.add("switching");
         setTimeout(() => {
             themeBtn.innerHTML = dark ? sunIcon : moonIcon;
@@ -445,4 +489,3 @@
 
 </body>
 </html>
-
