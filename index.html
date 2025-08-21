@@ -20,7 +20,7 @@
         --grad-end: #28a745;
         --logo-path: light.png;
 		--favicon-path: lightFavSquare.png;
-		--color-shade:rgba(241,243,245,130);   /*bckgrnd u rgb zapisu radi alpha broja*/
+		--color-shade:rgba(241,243,245,130);   /*--color-bg boja u rgb zapisu radi alpha broja*/
     }
     body.dark {
         --color-bg: #171e37;
@@ -174,7 +174,7 @@
         color: var(--color-muted);
     }
     button {
-        background-color: #28a745; /* crUX zelena */
+        background-color: var(--color-green);
         color: white;
         border: none;
         padding: 0.75rem 1.5rem;
@@ -237,6 +237,147 @@
 		-webkit-text-fill-color: transparent;
 		color: transparent;
 	}
+	
+	
+	/* Contact Section Styles */
+    .contact-section {
+        background-color: var(--color-card);
+        margin: 2rem auto;
+        border-radius: 1rem;
+        padding: 3rem 2rem;
+        box-shadow: var(--shadow-card);
+        max-width: 900px;
+    }
+
+    .contact-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .contact-header h2 {
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        color: var(--color-text);
+    }
+
+    .contact-info {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .info-icon {
+        background-color: var(--color-text);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 0.2rem;
+    }
+
+    .info-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: var(--color-bg);
+    }
+
+    .info-content h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+        color: var(--color-text);
+    }
+
+    .info-content p {
+        font-size: 1rem;
+        color: var(--color-text);
+        margin: 0;
+        line-height: 1.4;
+    }
+
+    .contact-form {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        color: var(--color-text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 0.8rem 1rem;
+        border: 2px solid rgba(0,0,0,0.1);
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-family: inherit;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+    }
+
+    body.dark .form-group input,
+    body.dark .form-group textarea {
+        border-color: rgba(255,255,255,0.2);
+    }
+
+    body.dark .form-group input:focus,
+    body.dark .form-group textarea:focus {
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .submit-btn {
+        background-color: #28a745; /* crUX zelena */
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: var(--color-green-hover); 
+    }
 
     /* Hamburger menu styles */
     .hamburger {
@@ -358,7 +499,7 @@
 
 
 
-    <button>Pošalji upit</button>
+    <button onclick="document.getElementById('kontakt').scrollIntoView({behavior: 'smooth'})">Pošalji upit</button>
 </section>
 
 <section id="usluge" class="section">
@@ -407,7 +548,73 @@
 	<!--<button id="probniSVG"></button>-->
 
 
+<section id="kontakt" class="section">
+    <div class="contact-section">
+        <div class="contact-header">
+            <h2>crUX studio</h2>
+        </div>
 
+        <div class="contact-info">
+            <div class="info-item">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
+                <div class="info-content">
+                    <h3>Nazovite</h3>
+                    <p>+385 98 381 766<br>Zrinka Ratković</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </div>
+                <div class="info-content">
+                    <h3>Email</h3>
+                    <p>zrinka.ratkovic@gmail.com</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <div class="info-content">
+                    <h3>Lokacija</h3>
+                    <p>Zagreb<br>Hrvatska</p>
+                </div>
+            </div>
+        </div>
+
+        <form class="contact-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="ime">Ime</label>
+                    <input type="text" id="ime" name="ime" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="poruka">Poruka</label>
+                <textarea id="poruka" name="poruka" placeholder="Poštovani," required></textarea>
+            </div>
+            <div style="text-align: right;">
+                <button type="submit" class="submit-btn">Pošalji upit</button>
+            </div>
+        </form>
+    </div>
+</section>
 <footer>
     &copy; 2025 crUX studio – Sva prava pridržana.
 </footer>
@@ -484,6 +691,30 @@
 
     themeBtn.addEventListener("click", () => {
         applyTheme(!document.body.classList.contains("dark"));
+    });
+	
+	
+	// Contact form submission
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(this);
+        const ime = formData.get('ime');
+        const email = formData.get('email');
+        const poruka = formData.get('poruka');
+        
+        // Simple validation
+        if (!ime || !email || !poruka) {
+            alert('Molimo popunite sva polja.');
+            return;
+        }
+        
+        // Here you would typically send the data to your server
+        alert('Hvala vam na poruci! Javit ćemo vam se uskoro.');
+        
+        // Reset form
+        this.reset();
     });
 </script>
 
