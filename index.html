@@ -16,10 +16,11 @@
         --color-green: #28a745;
         --color-green-hover: #00cc33;
         --shadow-card: 0 2px 10px rgba(0,0,0,0.05);
+		--shadow-header: 0 2px 10px rgba(0,0,0,0.05);
         --grad-start: #4791d5;
         --grad-end: #28a745;
         --logo-path: light.png;
-		--favicon-path: /crUX-studio/lightFavSquare.png;
+		--favicon-path: lightFavSquare.png;
 		--color-shade:rgba(241,243,245,130);   /*--color-bg boja u rgb zapisu radi alpha broja*/
     }
     body.dark {
@@ -31,12 +32,13 @@
         --color-red: #f87171;			/* crUX crvena */
         --color-green: #28a745;
         --color-green-hover: #00e600;
-        --shadow-card: 0 2px 10px rgba(255,255,255,0.08);
+        --shadow-card: none;
+		--shadow-header:0 2px 10px rgba(255,255,255,0.08);
         --grad-start: #4791d5;
         --grad-end: #28a745;
         --logo-path: dark.png;
-		--favicon-path: /crUX-studio/darkFavSquare.png;
-		--color-shade:rgba(24,30,54,130);
+		--favicon-path: darkFavSquare.png;
+		--color-shade:rgba(24,30,54,130);         /* zašto se ne vidi dark sjena ispod headera?*/
     }
     body {
         margin: 0;
@@ -45,6 +47,7 @@
         background-color: var(--color-bg);
         color: var(--color-text);
         transition: background-color 0.3s ease, color 0.3s ease;
+
     }
     header {
         padding: 1.5rem 2rem;
@@ -59,7 +62,7 @@
 		box-sizing: border-box;
 		background-color: var(--color-bg); 
 		z-index: 1000;
-		box-shadow: var(--shadow-card);
+		box-shadow: var(--shadow-header);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
 		
@@ -157,6 +160,7 @@
     }
     .card {
         background-color: var(--color-card);
+		box-shadow:var(--shadow-card);
         padding: 1.5rem;
         border-radius: 0.75rem;
         transition: transform 0.3s ease;
@@ -594,7 +598,7 @@
             </div>
         </div>
 
-        <form class="contact-form">
+        <form class="contact-form" action="https://formspree.io/f/mqalvvlv"  method="POST">
             <div class="form-row">
                 <div class="form-group">
                     <label for="ime">Ime</label>
@@ -607,7 +611,7 @@
             </div>
             <div class="form-group">
                 <label for="poruka">Poruka</label>
-                <textarea id="poruka" name="poruka" placeholder="Poštovani," required></textarea>
+                <textarea id="poruka" name="message" placeholder="Poštovani," required></textarea>
             </div>
             <div style="text-align: right;">
                 <button type="submit" class="submit-btn">Pošalji upit</button>
@@ -694,6 +698,8 @@
     });
 	
 	
+	/* ovo je izbačeno zbog korištenja vanjskog servisa Formspree (action="https://formspree.io/f/mqalvvlv" method="POST")
+
 	// Contact form submission
     document.querySelector('.contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -715,10 +721,8 @@
         
         // Reset form
         this.reset();
-    });
+    });*/
 </script>
 
 </body>
 </html>
-
-
