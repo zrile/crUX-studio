@@ -38,8 +38,8 @@
         --grad-end: #28a745;
         --logo-path: dark.png;
 		--favicon-path: darkFavSquare.png;
-		--color-shade:rgba(24,30,54,130);         /* zašto se ne vidi dark sjena ispod headera?*/
-    }
+		--color-shade:rgba(24,30,54,130);        
+	}
     body {
         margin: 0;
 		padding-top: clamp(4rem, 8vw, 5.125rem);
@@ -454,6 +454,13 @@
             width: 28px;
             height: 28px;
         }
+		.form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .submit-btn {
+            justify-self: stretch;
+        }
     }
 
 </style>
@@ -472,9 +479,9 @@
     </div>
 	
     <nav id="menu">
-        <a href="#usluge">Usluge</a>
+        <a href="#usluge" onclick="smoothScrollToSection(event, 'usluge')">Usluge</a>
         <!--<a href="#portfolio">Portfolio</a>-->
-        <a href="#kontakt">Kontakt</a>
+        <a href="#kontakt" onclick="smoothScrollToSection(event, 'kontakt')">Kontakt</a>
         <button class="theme-toggle" id="themeBtn" aria-label="Promijeni temu">
             <!-- Ikona se mijenja JS-om -->
         </button>
@@ -611,7 +618,7 @@
             </div>
             <div class="form-group">
                 <label for="poruka">Poruka</label>
-                <textarea id="poruka" name="message" placeholder="Poštovani," required></textarea>
+                <textarea id="poruka" name="poruka" placeholder="Poštovani," required></textarea>
             </div>
             <div style="text-align: right;">
                 <button type="submit" class="submit-btn">Pošalji upit</button>
@@ -698,10 +705,30 @@
     });
 	
 	
-	/* ovo je izbačeno zbog korištenja vanjskog servisa Formspree (action="https://formspree.io/f/mqalvvlv" method="POST")
-
+	// Smooth scroll function with header offset
+	function smoothScrollToSection(event, targetId) {
+        event.preventDefault();
+        
+        const targetElement = document.getElementById(targetId);
+        if (!targetElement) return;
+        
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const targetPosition = targetElement.offsetTop - headerHeight - 20; // 20px extra padding
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+        
+        // Close mobile menu if open
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+	}
+	
+	
+	// ovo je izbačeno zbog korištenja vanjskog servisa Formspree (action="https://formspree.io/f/mqalvvlv" method="POST")
 	// Contact form submission
-    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+   document.querySelector('.contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Get form data
@@ -721,7 +748,7 @@
         
         // Reset form
         this.reset();
-    });*/
+    });
 </script>
 
 </body>
