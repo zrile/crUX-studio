@@ -142,8 +142,7 @@
 	#slogan {
         font-size: clamp(0.8rem, 1.5vw, 1.1rem);
         position: absolute;
-        /*bottom: -0.5em;*/
-		bottom: clamp(3.59em, 9vw, 3.6em);
+		bottom:	clamp(2.5rem, 8vw, 5.4rem);
         right: -1.3em;
         white-space: nowrap;
         font-style: italic;
@@ -648,7 +647,7 @@
 
 
 
-    <button onclick="smoothScrollToSection(event, 'kontakt')">Pošalji upit</button>
+    <button onclick="smoothScrollToSection(event, 'kontakt')">Kontakt</button>
 </section>
 
 <section id="usluge" class="section">
@@ -946,12 +945,88 @@
     }
 	
 	
+	
+	
+	
+/*	
+// Create a live viewport width display with em, rem sizes, and #slogan bottom property
+const vwDisplay = document.createElement('div');
+vwDisplay.style.cssText = `
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 5px 10px;
+  font-family: monospace;
+  font-size: 14px;
+  z-index: 9999;
+  border-radius: 3px;
+  line-height: 1.3;
+`;
+
+function getEmSize() {
+  // Create a temporary element to measure em size
+  const tempEl = document.createElement('div');
+  tempEl.style.cssText = `
+    position: absolute;
+    visibility: hidden;
+    width: 1em;
+    height: 1em;
+  `;
+  document.body.appendChild(tempEl);
+  const emSize = tempEl.offsetWidth;
+  document.body.removeChild(tempEl);
+  return emSize;
+}
+
+function getRemSize() {
+  // Create a temporary element to measure rem size (relative to root)
+  const tempEl = document.createElement('div');
+  tempEl.style.cssText = `
+    position: absolute;
+    visibility: hidden;
+    width: 1rem;
+    height: 1rem;
+  `;
+  document.body.appendChild(tempEl);
+  const remSize = tempEl.offsetWidth;
+  document.body.removeChild(tempEl);
+  return remSize;
+}
+
+function getSloganBottom() {
+  const sloganEl = document.getElementById('slogan');
+  if (!sloganEl) return 'N/A';
+  
+  const computedStyle = window.getComputedStyle(sloganEl);
+  return computedStyle.bottom;
+}
+
+function updateVW() {
+  const vw = window.innerWidth / 100; // 1vw in pixels
+  const currentVW = window.innerWidth;
+  const emSize = getEmSize();
+  const remSize = getRemSize();
+  const sloganBottom = getSloganBottom();
+  
+  vwDisplay.innerHTML = `
+    ${currentVW}px<br>
+    1vw = ${vw.toFixed(2)}px<br>
+    1em = ${emSize}px<br>
+    1rem = ${remSize}px<br>
+    #slogan bottom: ${sloganBottom}
+  `;
+}
+
+document.body.appendChild(vwDisplay);
+updateVW();
+window.addEventListener('resize', updateVW);
+*/	
+	
+	
 </script>
 
 </body>
 </html>
-
-
-
-
 
