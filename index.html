@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-JVJZRGD5WM');
 </script>
 <meta charset="UTF-8">
@@ -19,72 +18,67 @@
         --color-bg: #f1f3f4;
         --color-text: #0f172a;
         --color-muted: #c3c5d7;         
-        --color-accent: #28a745;		/* crUX zelena */
+        --color-accent: #28a745;
         --color-card: #ffffff;
         --color-red: #dc2626;
         --color-green: #28a745;
         --color-green-hover: #00cc33;
         --shadow-card: 0 2px 10px rgba(0,0,0,0.05);
-		--shadow-header: 0 2px 10px rgba(0,0,0,0.05);
+        --shadow-header: 0 2px 10px rgba(0,0,0,0.05);
         --grad-start: #4791d5;
         --grad-end: #28a745;
         --logo-path: light.png;
-		--favicon-path: lightFavSquare.png;
-		--color-shade:rgba(241,243,245,130);   /*--color-bg boja u rgb zapisu radi alpha broja*/
+        --favicon-path: lightFavSquare.png;
+        --color-shade:rgba(241,243,245,130);
     }
     body.dark {
         --color-bg: #171e37;
         --color-text: #b8b8b8;
-        --color-muted: #495057;         /* crUX siva */
-        --color-accent: #4791d5;        /* crUX plava */
+        --color-muted: #495057;
+        --color-accent: #4791d5;
         --color-card: #1e293b;
-        --color-red: #f87171;			/* crUX crvena */
+        --color-red: #f87171;
         --color-green: #28a745;
         --color-green-hover: #00e600;
         --shadow-card: none;
-		--shadow-header:0 2px 10px rgba(255,255,255,0.08);
+        --shadow-header:0 2px 10px rgba(255,255,255,0.08);
         --grad-start: #4791d5;
         --grad-end: #28a745;
         --logo-path: dark.png;
-		--favicon-path: darkFavSquare.png;
-		--color-shade:rgba(24,30,54,130);        
-	}
+        --favicon-path: darkFavSquare.png;
+        --color-shade:rgba(24,30,54,130);        
+    }
     body {
         margin: 0;
-		padding-top: clamp(4.5rem, 10vw, 6rem);
+        padding-top: clamp(4.5rem, 10vw, 6rem);
         font-family: 'Segoe UI', Roboto, sans-serif;
         background-color: var(--color-bg);
         color: var(--color-text);
         transition: background-color 0.3s ease, color 0.3s ease;
-
     }
     header {
         padding: clamp(0.8rem, 2vw, 1.5rem) clamp(1rem, 4vw, 2rem);
         display: flex;
         justify-content: space-between;
         align-items: center;
-		position: fixed;
-		top: 0;
+        position: fixed;
+        top: 0;
         left: 0;
         right: 0;
-		width: 100%;
-		min-height: 4rem;
-		box-sizing: border-box;
-		background-color: var(--color-bg); 
-		z-index: 1000;
-		box-shadow: var(--shadow-header);
+        width: 100%;
+        min-height: 4rem;
+        box-sizing: border-box;
+        background-color: var(--color-bg); 
+        z-index: 1000;
+        box-shadow: var(--shadow-header);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-		
-		
-		
-		
     }
     header img {
         height: clamp(35px, 8vw, 50px);
-		width: auto;
+        width: auto;
     }
-	nav {
+    nav {
         display: flex;
         align-items: center;
     }
@@ -97,6 +91,36 @@
     nav a:hover {
         color: var(--color-accent);
     }
+    
+    /* Language Switcher */
+    .lang-switcher {
+        margin-left: 1.5rem;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+    .lang-btn {
+        background: none;
+        border: 2px solid var(--color-text);
+        color: var(--color-text);
+        cursor: pointer;
+        padding: 0.3rem 0.6rem;
+        border-radius: 0.3rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        opacity: 0.5;
+    }
+    .lang-btn:hover {
+        opacity: 0.8;
+    }
+    .lang-btn.active {
+        background-color: var(--color-accent);
+        border-color: var(--color-accent);
+        color: white;
+        opacity: 1;
+    }
+    
     .theme-toggle {
         margin-left: 1.5rem;
         background: none;
@@ -126,38 +150,36 @@
         opacity: 0;
     }
     .hero {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-        padding: clamp(3rem, 8vw, 6rem) 1rem; /* raste s veličinom ekrana */
-		position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: clamp(3rem, 8vw, 6rem) 1rem;
+        position: relative;
     }
     .hero h1 {
-		font-size: clamp(2rem, 6vw, 3.5rem); /* 2rem na mobu, 3.5rem na desktopu */
-		font-weight: 700;
-		margin-bottom: 0.5rem;
-		position: relative;
+        font-size: clamp(2rem, 6vw, 3.5rem);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        position: relative;
     }
     .hero p {
         font-size: clamp(1rem, 2.5vw, 1.3rem);
-		max-width: 600px;
-		margin-bottom: 2rem;
+        max-width: 600px;
+        margin-bottom: 2rem;
     }
-	.hero button {
-		margin-top: 2rem;
-	}
-
-	#slogan {
+    .hero button {
+        margin-top: 2rem;
+    }
+    #slogan {
         font-size: clamp(0.8rem, 1.5vw, 1.1rem);
         position: absolute;
-		bottom:	clamp(2.5rem, 8vw, 5.4rem);
+        bottom: clamp(2.5rem, 8vw, 5.4rem);
         right: -1.3em;
         white-space: nowrap;
         font-style: italic;
-		font-weight: 400;
-	}
-
+        font-weight: 400;
+    }
     .section {
         padding: 4rem 2rem;
         max-width: 1100px;
@@ -170,7 +192,7 @@
     }
     .card {
         background-color: var(--color-card);
-		box-shadow:var(--shadow-card);
+        box-shadow:var(--shadow-card);
         padding: 1.5rem;
         border-radius: 0.75rem;
         transition: transform 0.3s ease;
@@ -179,7 +201,7 @@
         transform: translateY(-5px);
     }
     .card h3 {
-        color: #f87171; /* crUX crvena */
+        color: #f87171;
     }
     footer {
         text-align: center;
@@ -200,20 +222,17 @@
     button:hover {
         background-color: var(--color-green-hover); 
     }
-
-    /* Animacija linije */
     .flow-line {
-		width: 8.3em; /* Using em units to scale with h1 font size */		
-		height:auto;
+        width: 8.3em;
+        height:auto;
         max-width: 500px;
         margin: 0 auto;
-		position: absolute;
-		top: clamp(-4.5em, -2vw, -3.7em);
-		left: 2.9em;
-		transform: translateX(-50%);
-		z-index: -1;
+        position: absolute;
+        top: clamp(-4.5em, -2vw, -3.7em);
+        left: 2.9em;
+        transform: translateX(-50%);
+        z-index: -1;
     }
-	
     .flow-path {
         fill: none;
         stroke: url(#lineGradient);
@@ -225,35 +244,18 @@
         animation: drawErase 6s linear infinite;
     }
     @keyframes drawErase {
-        0% {
-            stroke-dashoffset: 500;
-        }
-        50% {
-            stroke-dashoffset: 0;
-        }
-        66.66% {
-            stroke-dashoffset: 0;
-        }
-        100% {
-            stroke-dashoffset: -500;
-        }
+        0% { stroke-dashoffset: 500; }
+        50% { stroke-dashoffset: 0; }
+        66.66% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: -500; }
     }
-	/* Ovo je ona gnjavaža oko ikone sunce/mjesec */
-	/*#probniSVG svg {
-	  width: 24px;
-	  height: 24px;
-	}*/
-
-	.gradient-text {
-		background: linear-gradient(90deg, #4a90e2 0%, #28a745 100%);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		color: transparent;
-	}
-	
-	
-	/* Contact Section Styles */
+    .gradient-text {
+        background: linear-gradient(90deg, #4a90e2 0%, #28a745 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+    }
     .contact-section {
         background-color: var(--color-card);
         margin: 2rem auto;
@@ -262,32 +264,27 @@
         box-shadow: var(--shadow-card);
         max-width: 900px;
     }
-
     .contact-header {
         text-align: center;
         margin-bottom: 3rem;
     }
-
     .contact-header h2 {
         font-size: clamp(2rem, 4vw, 2.5rem);
         font-weight: 700;
         margin-bottom: 0.5rem;
         color: var(--color-text);
     }
-
     .contact-info {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
         margin-bottom: 3rem;
     }
-
     .info-item {
         display: flex;
         align-items: center;
         gap: 1rem;
     }
-
     .info-icon {
         background-color: var(--color-text);
         border-radius: 50%;
@@ -299,50 +296,42 @@
         flex-shrink: 0;
         margin-top: 0.2rem;
     }
-
     .info-icon svg {
         width: 20px;
         height: 20px;
         fill: var(--color-bg);
     }
-
     .info-content h3 {
         font-size: 1.2rem;
         font-weight: 600;
         margin-bottom: 0.3rem;
         color: var(--color-text);
     }
-
     .info-content p {
         font-size: 1rem;
         color: var(--color-text);
         margin: 0;
         line-height: 1.4;
     }
-
     .kontakt-forma {
         display: grid;
         gap: 1.5rem;
     }
-
     .form-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 1.5rem;
     }
-
     .form-group {
         display: flex;
         flex-direction: column;
     }
-
     .form-group label {
         font-size: 1rem;
         font-weight: 500;
         margin-bottom: 0.5rem;
         color: var(--color-text);
     }
-
     .form-group input,
     .form-group textarea {
         padding: 0.8rem 1rem;
@@ -354,32 +343,27 @@
         color: var(--color-text);
         transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-
     .form-group input:focus,
     .form-group textarea:focus {
         outline: none;
         border-color: var(--color-accent);
         box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
     }
-
     body.dark .form-group input,
     body.dark .form-group textarea {
         border-color: rgba(255,255,255,0.2);
     }
-
     body.dark .form-group input:focus,
     body.dark .form-group textarea:focus {
         border-color: var(--color-accent);
         box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2);
     }
-
     .form-group textarea {
         resize: vertical;
         min-height: 120px;
     }
-
     .submit-btn {
-        background-color: #28a745; /* crUX zelena */
+        background-color: #28a745;
         color: white;
         border: none;
         padding: 0.75rem 1.5rem;
@@ -388,12 +372,9 @@
         font-size: 1rem;
         transition: background-color 0.3s ease;
     }
-
     .submit-btn:hover {
         background-color: var(--color-green-hover); 
     }
-
-    /* Hamburger menu styles */
     .hamburger {
         display: none;
         flex-direction: column;
@@ -422,33 +403,27 @@
     .hamburger.active span:nth-child(3) {
         transform: rotate(45deg) translate(-5px, -6px);
     }
-
-    /* Mobile navigation */
     @media (max-width: 768px) {
         .hamburger {
             display: flex;
         }
-                
         header {
             padding: 1rem 1.5rem;
             min-height: 3.5rem;
         }
-        
         header img {
             height: 40px;
         }
-        
         body {
             padding-top: 4rem;
         }
-		
         nav {
             position: fixed;
             top: 4rem;
             right: 0;
             width: 20%;
             height: auto;
-			border-radius:3px;
+            border-radius:3px;
             background-color: var(--color-bg);
             flex-direction: column;
             justify-content: center;
@@ -457,82 +432,68 @@
             transition: transform 0.3s ease;
             z-index: 1000;
         }
-        
         nav.active {
             transform: translateX(0);
-			box-shadow: -10px 10px 80px 30px var(--color-shade);
+            box-shadow: -10px 10px 80px 30px var(--color-shade);
         }
-        
         nav a {
             margin: 1rem 0;
             font-size: 1rem;
             font-weight: 400;
         }
-        
+        .lang-switcher {
+            margin: 0.5rem 0;
+        }
         .theme-toggle {
             margin: 0.2rem 0 0 0;
         }
-        
         nav .theme-toggle svg {
             width: 28px;
             height: 28px;
         }
-		.form-row {
+        .form-row {
             grid-template-columns: 1fr;
         }
-
         .submit-btn {
             justify-self: stretch;
         }
     }
-	
-	
-	/* Additional media query for very narrow screens */
     @media (max-width: 450px) {
         header {
             padding: 0.8rem 1rem;
             min-height: 3.2rem;
         }
-        
         header img {
             height: 35px;
         }
-        
         body {
             padding-top: 3.8rem;
         }
-        
         nav {
             top: 3.8rem;
             width: 25%;
         }
-        
         .hero {
             padding: 2rem 1rem;
         }
-        
         .flow-line {
             top: -3.7em;
         }
     }
-	
-	
-	
-	/* Modal stilovi */
     .modal {
-      display: none; 
-      position: fixed;
-      z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
+        display: none; 
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        justify-content: center;
+        align-items: center;
     }
-	.modal.show {
-       display: flex;
-       justify-content: center;
-       align-items: center;
+    .modal.show {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .modal-content {
         background-color: var(--color-card);
@@ -546,7 +507,6 @@
         animation: modalSlideIn 0.3s ease-out;
         position: relative;
     }
-
     @keyframes modalSlideIn {
         from {
             opacity: 0;
@@ -557,19 +517,16 @@
             transform: scale(1) translateY(0);
         }
     }
-
     .modal-content h3 {
         margin-top: 0;
         margin-bottom: 1rem;
         font-size: 1.5rem;
     }
-
     .modal-content p {
         margin-bottom: 1.5rem;
         color: var(--color-text);
         opacity: 0.8;
     }
-
     .close {
         position: absolute;
         top: 1rem;
@@ -581,133 +538,83 @@
         opacity: 0.7;
         transition: opacity 0.3s ease;
     }
-
     .close:hover {
         opacity: 1;
     }
-
     .success {
         border-top: 4px solid var(--color-green);
     }
-
     .error {
         border-top: 4px solid var(--color-red);
-    }
-
-    .modal-btn {
-        background-color: var(--color-accent);
-        color: white;
-        border: none;
-        padding: 0.7rem 1.5rem;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-    }
-
-    .modal-btn:hover {
-        background-color: var(--color-green-hover);
-        transform: translateY(-1px);
     }
 </style>
 </head>
 <body>
 
 <header>
-	<!-- Logo se mijenja JS-om -->
     <a href="#home" onclick="smoothScrollToSection(event, 'home')"><img id="logo" alt="crUX studio logo"></a>
-	
-	<!-- Hamburger menu button -->
+    
     <div class="hamburger" id="hamburger">
         <span></span>
         <span></span>
         <span></span>
     </div>
-	
+    
     <nav id="menu">
-        <a href="#usluge" onclick="smoothScrollToSection(event, 'usluge')">Usluge</a>
-        <!--<a href="#portfolio">Portfolio</a>-->
-        <a href="#kontakt" onclick="smoothScrollToSection(event, 'kontakt')">Kontakt</a>
+        <a href="#usluge" onclick="smoothScrollToSection(event, 'usluge')" data-hr="Usluge" data-en="Services">Usluge</a>
+        <a href="#kontakt" onclick="smoothScrollToSection(event, 'kontakt')" data-hr="Kontakt" data-en="Contact">Kontakt</a>
+        
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="hr">HR</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        
         <button class="theme-toggle" id="themeBtn" aria-label="Promijeni temu">
-            <!-- Ikona se mijenja JS-om -->
         </button>
     </nav>
 </header>
 
 <section id="home" class="hero">
     <h1>crUX studio
-	
-		<div id="slogan">Into the flow.</div>
-		
-		<!-- Animirana linija -->
-		<svg class="flow-line" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-			<defs>
-				<linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-					<stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
-					<stop offset="100%" style="stop-color:#28a745;stop-opacity:1" />
-				</linearGradient>
-			</defs>
-			<path class="flow-path" d="M50 250 L80 220 L60 190 L100 160 Q140 130, 180 140 Q220 150, 260 140 Q300 130, 340 120" />
-		</svg>
-		
-	</h1>
-	
-    <p>Kreiramo intuitivna i privlačna korisnička iskustva koja ostavljaju <b><span class="gradient-text">trag</span></b>.</p>
+        <div id="slogan" data-hr="Into the flow." data-en="Into the flow.">Into the flow.</div>
+        
+        <svg class="flow-line" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#28a745;stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <path class="flow-path" d="M50 250 L80 220 L60 190 L100 160 Q140 130, 180 140 Q220 150, 260 140 Q300 130, 340 120" />
+        </svg>
+    </h1>
+    
+    <p id="hero-text" data-hr="Kreiramo intuitivna i privlačna korisnička iskustva koja ostavljaju <b><span class='gradient-text'>trag</span></b>." data-en="Projecting the <b><span class='gradient-text'>route</span></b> of intuitive, engaging user experiences.">Kreiramo intuitivna i privlačna korisnička iskustva koja ostavljaju <b><span class="gradient-text">trag</span></b>.</p>
 
-
-
-    <button onclick="smoothScrollToSection(event, 'kontakt')">Kontakt</button>
+    <button onclick="smoothScrollToSection(event, 'kontakt')" data-hr="Kontakt" data-en="Contact">Kontakt</button>
 </section>
 
 <section id="usluge" class="section">
-    <h2>Naše usluge</h2>
+    <h2 data-hr="Naše usluge" data-en="Our Services">Naše usluge</h2>
     <div class="services">
-		<div class="card">
-			<h3>Web Dizajn</h3>
-            <p>Idejno rješenje, izrada i održavanje web sjedišta.</p>
+        <div class="card">
+            <h3 data-hr="Web Dizajn" data-en="Web Design">Web Dizajn</h3>
+            <p data-hr="Idejno rješenje, izrada i održavanje web sjedišta." data-en="Concept design, development and maintenance of websites.">Idejno rješenje, izrada i održavanje web sjedišta.</p>
         </div>
         <div class="card">
-            <h3>UX Istraživanje</h3>
-            <p>Analiza potreba korisnika i optimizacija korisničkog iskustva.</p>
+            <h3 data-hr="UX Istraživanje" data-en="UX Research">UX Istraživanje</h3>
+            <p data-hr="Analiza potreba korisnika i optimizacija korisničkog iskustva." data-en="User needs analysis and user experience optimization.">Analiza potreba korisnika i optimizacija korisničkog iskustva.</p>
         </div>
         <div class="card">
-            <h3>Grafički i UI Dizajn</h3>
-            <p>Estetski i funkcionalan dizajn znaka, loga i sučelja - prilagođen brendu.</p>
+            <h3 data-hr="Grafički i UI Dizajn" data-en="Graphic & UI Design">Grafički i UI Dizajn</h3>
+            <p data-hr="Estetski i funkcionalan dizajn znaka, loga i sučelja - prilagođen brendu." data-en="Aesthetic and functional design of symbols, logos and interfaces - tailored to your brand.">Estetski i funkcionalan dizajn znaka, loga i sučelja - prilagođen brendu.</p>
         </div>
         <div class="card">
-            <h3>Prototipiranje</h3>
-            <p>Interaktivni prototipi za testiranje i validaciju ideja.</p>
+            <h3 data-hr="Prototipiranje" data-en="Prototyping">Prototipiranje</h3>
+            <p data-hr="Interaktivni prototipi za testiranje i validaciju ideja." data-en="Interactive prototypes for testing and validating ideas.">Interaktivni prototipi za testiranje i validaciju ideja.</p>
         </div>
     </div>
 </section>
-
-<!--
-<section id="portfolio" class="section">
-    <h2>Portfolio</h2>
-    <div class="portfolio">
-        <div class="card">
-            <h3>Projekt A</h3>
-            <p>Kratak opis projekta i postignutih rezultata.</p>
-        </div>
-        <div class="card">
-            <h3>Projekt B</h3>
-            <p>Kratak opis projekta i postignutih rezultata.</p>
-        </div>
-        <div class="card">
-            <h3>Projekt C</h3>
-            <p>Kratak opis projekta i postignutih rezultata.</p>
-        </div>
-    </div>
-</section>
-
-<section id="kontakt" class="section">
-    <h2>Kontakt</h2>
-    <p>Pošaljite nam poruku i započnimo suradnju!</p>
-    <button>Pošalji upit</button>
-</section>-->
-
-	<!--<button id="probniSVG"></button>-->
-
 
 <section id="kontakt" class="section">
     <div class="contact-section">
@@ -723,7 +630,7 @@
                     </svg>
                 </div>
                 <div class="info-content">
-                    <h3>Nazovite</h3>
+                    <h3 data-hr="Nazovite" data-en="Call us">Nazovite</h3>
                     <p>+385 98 381 766</p>
                 </div>
             </div>
@@ -731,9 +638,9 @@
             <div class="info-item">
                 <div class="info-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-  <polyline points="22,6 12,13 2,6"/>
-</svg>
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
                 </div>
                 <div class="info-content">
                     <h3>Email</h3>
@@ -749,16 +656,16 @@
                     </svg>
                 </div>
                 <div class="info-content">
-                    <h3>Lokacija</h3>
-                    <p>Zagreb, Hrvatska</p>
+                    <h3 data-hr="Lokacija" data-en="Location">Lokacija</h3>
+                    <p>Zagreb, <span data-hr="Hrvatska" data-en="Croatia">Hrvatska</span></p>
                 </div>
             </div>
         </div>
 
-        <form id="contact-form" class="kontakt-forma" action="https://formspree.io/f/mqalvvlv"  method="POST">
+        <form id="contact-form" class="kontakt-forma" action="https://formspree.io/f/mqalvvlv" method="POST">
             <div class="form-row">
                 <div class="form-group">
-                    <label for="ime">Ime</label>
+                    <label for="ime" data-hr="Ime" data-en="Name">Ime</label>
                     <input type="text" id="ime" name="name" required>
                 </div>
                 <div class="form-group">
@@ -767,49 +674,85 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="poruka">Poruka</label>
-                <textarea id="poruka" name="message" placeholder="Vaša poruka..." required></textarea>
+                <label for="poruka" data-hr="Poruka" data-en="Message">Poruka</label>
+                <textarea id="poruka" name="message" data-hr-placeholder="Vaša poruka..." data-en-placeholder="Your message..." placeholder="Vaša poruka..." required></textarea>
             </div>
             <div style="text-align: right;">
-                <button type="submit" class="submit-btn">Pošalji upit</button>
+                <button type="submit" class="submit-btn" data-hr="Pošalji upit" data-en="Send">Pošalji upit</button>
             </div>
         </form>
-		
-		<!-- Success Modal -->
-		<div id="successModal" class="modal">
-			<div class="modal-content success">
-			  <span class="close">&times;</span>
-			  <h3>✅ Poruka poslana!</h3>
-			  <p>Hvala što ste nas kontaktirali.</p>
-			</div>
-		 </div>
+        
+        <div id="successModal" class="modal">
+            <div class="modal-content success">
+                <span class="close">&times;</span>
+                <h3 data-hr="✅ Poruka poslana!" data-en="✅ Message sent!">✅ Poruka poslana!</h3>
+                <p data-hr="Hvala što ste nas kontaktirali." data-en="Thank you for contacting us.">Hvala što ste nas kontaktirali.</p>
+            </div>
+        </div>
 
-		 <!-- Error Modal -->
-		 <div id="errorModal" class="modal">
-			<div class="modal-content error">
-			  <span class="close">&times;</span>
-			  <h3>❌ Greška!</h3>
-			  <p>Ups! Došlo je do problema. Pokušajte ponovno.</p>
-			</div>
-		 </div>
+        <div id="errorModal" class="modal">
+            <div class="modal-content error">
+                <span class="close">&times;</span>
+                <h3 data-hr="❌ Greška!" data-en="❌ Error!">❌ Greška!</h3>
+                <p data-hr="Ups! Došlo je do problema. Pokušajte ponovno." data-en="Oops! Something went wrong. Please try again.">Ups! Došlo je do problema. Pokušajte ponovno.</p>
+            </div>
+        </div>
     </div>
 </section>
+
 <footer>
-    &copy; 2025 crUX studio – Sva prava pridržana.
+    <span data-hr="&copy; 2025 crUX studio – Sva prava pridržana." data-en="&copy; 2025 crUX studio – All rights reserved.">&copy; 2025 crUX studio – Sva prava pridržana.</span>
 </footer>
 
 <script>
     const logo = document.getElementById("logo");
-	const favicon = document.getElementById("favicon");
+    const favicon = document.getElementById("favicon");
     const themeBtn = document.getElementById("themeBtn");
-	const hamburger = document.getElementById("hamburger");
+    const hamburger = document.getElementById("hamburger");
     const nav = document.getElementById("menu");
-    /*var currentColor =  getComputedStyle(document.body).getPropertyValue("--color-text").trim();
-	console.log(currentColor)
-	const probniSVG = document.getElementById("probniSVG");
-	probniSVG.innerHTML = sunIcon;*/
+    
     const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
-	const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95-6.95-1.41 1.41M6.46 17.54l-1.41 1.41m0-13.42 1.41 1.41m11.08 11.08 1.41 1.41"/></svg>`;
+    const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2m11-11h-2M3 12H1m16.95-6.95-1.41 1.41M6.46 17.54l-1.41 1.41m0-13.42 1.41 1.41m11.08 11.08 1.41 1.41"/></svg>`;
+
+    // Language switcher
+    let currentLang = localStorage.getItem("language") || "hr";
+    
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem("language", lang);
+        document.documentElement.lang = lang;
+        
+        // Update all elements with data attributes
+        document.querySelectorAll("[data-hr][data-en]").forEach(el => {
+            const content = el.getAttribute(`data-${lang}`);
+            if (content) {
+                el.innerHTML = content;
+            }
+        });
+        
+        // Update placeholders separately
+        document.querySelectorAll("[data-hr-placeholder][data-en-placeholder]").forEach(el => {
+            const placeholderAttr = `data-${lang}-placeholder`;
+            if (el.hasAttribute(placeholderAttr)) {
+                el.placeholder = el.getAttribute(placeholderAttr);
+            }
+        });
+        
+        // Update language buttons
+        document.querySelectorAll(".lang-btn").forEach(btn => {
+            btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+        });
+    }
+    
+    // Initialize language
+    setLanguage(currentLang);
+    
+    // Language button listeners
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            setLanguage(btn.getAttribute("data-lang"));
+        });
+    });
 
     // Hamburger menu functionality
     hamburger.addEventListener('click', (e) => {
@@ -819,7 +762,6 @@
         nav.classList.toggle('active');
     });
 
-    // Close menu when clicking on a link
     nav.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
             hamburger.classList.remove('active');
@@ -827,31 +769,24 @@
         }
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (!hamburger.contains(e.target) && !nav.contains(e.target) && nav.classList.contains('active')) {
             hamburger.classList.remove('active');
             nav.classList.remove('active');
         }
     });
-	
-	
-	// favicon priprema
-	function updateFavicon(path) {
-    if (favicon) {
-        favicon.href = path;
+    
+    function updateFavicon(path) {
+        if (favicon) {
+            favicon.href = path;
+        }
     }
-	}
-	
 
     function applyTheme(dark) {
         document.body.classList.toggle("dark", dark);
-		// promjena loga
         logo.src = getComputedStyle(document.body).getPropertyValue("--logo-path").trim();
-		// promjena favicona
-		updateFavicon(getComputedStyle(document.body).getPropertyValue("--favicon-path").trim());
+        updateFavicon(getComputedStyle(document.body).getPropertyValue("--favicon-path").trim());
 
-		// animacija gumba za temu
         themeBtn.classList.add("switching");
         setTimeout(() => {
             themeBtn.innerHTML = dark ? sunIcon : moonIcon;
@@ -871,176 +806,62 @@
     themeBtn.addEventListener("click", () => {
         applyTheme(!document.body.classList.contains("dark"));
     });
-	
-	
-	// Smooth scroll function with header offset
-	function smoothScrollToSection(event, targetId) {
+    
+    function smoothScrollToSection(event, targetId) {
         event.preventDefault();
         
         const targetElement = document.getElementById(targetId);
         if (!targetElement) return;
         
         const headerHeight = document.querySelector('header').offsetHeight;
-        const targetPosition = targetElement.offsetTop - headerHeight - 20; // 20px extra padding
+        const targetPosition = targetElement.offsetTop - headerHeight - 20;
         
         window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
         });
         
-        // Close mobile menu if open
         hamburger.classList.remove('active');
         nav.classList.remove('active');
-	}
-	
-	
-	// ovo je izbačeno zbog korištenja vanjskog servisa Formspree (action="https://formspree.io/f/mqalvvlv" method="POST")
-	// Contact form submission
-   /*document.querySelector('.contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(this);
-        const ime = formData.get('name');
-        const email = formData.get('email');
-        const poruka = formData.get('message');
-        
-        // Simple validation
-        if (!ime || !email || !poruka) {
-            alert('Molimo popunite sva polja.');
-            return;
-        }
-        
-        // Here you would typically send the data to your server
-        alert('Hvala vam na poruci! Javit ćemo vam se uskoro.');
-        
-        // Reset form
-        this.reset();
-    });*/
-	
-	// chatGPT kontakt forma - koristi Formspree ali ima modale
-	const form = document.getElementById("contact-form");
+    }
+    
+    // Contact form with modals
+    const form = document.getElementById("contact-form");
     const successModal = document.getElementById("successModal");
     const errorModal = document.getElementById("errorModal");
     const closeBtns = document.querySelectorAll(".close");
 
     form.addEventListener("submit", async function(e) {
-      e.preventDefault();
-      const data = new FormData(form);
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-          successModal.style.display = "flex";
-          form.reset();
-        } else {
-          errorModal.style.display = "flex";
+        e.preventDefault();
+        const data = new FormData(form);
+        try {
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+            if (response.ok) {
+                successModal.style.display = "flex";
+                form.reset();
+            } else {
+                errorModal.style.display = "flex";
+            }
+        } catch (error) {
+            errorModal.style.display = "flex";
         }
-      } catch (error) {
-        errorModal.style.display = "flex";
-      }
     });
 
-    // Zatvaranje modala klikom na X
     closeBtns.forEach(btn => {
-      btn.onclick = function() {
-        btn.parentElement.parentElement.style.display = "none";
-      }
+        btn.onclick = function() {
+            btn.parentElement.parentElement.style.display = "none";
+        }
     });
 
-    // Zatvaranje modala klikom izvan prozora
     window.onclick = function(event) {
-      if (event.target === successModal) successModal.style.display = "none";
-      if (event.target === errorModal) errorModal.style.display = "none";
+        if (event.target === successModal) successModal.style.display = "none";
+        if (event.target === errorModal) errorModal.style.display = "none";
     }
-	
-	
-	
-	
-	
-/*	
-// Create a live viewport width display with em, rem sizes, and #slogan bottom property
-const vwDisplay = document.createElement('div');
-vwDisplay.style.cssText = `
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: rgba(0,0,0,0.8);
-  color: white;
-  padding: 5px 10px;
-  font-family: monospace;
-  font-size: 14px;
-  z-index: 9999;
-  border-radius: 3px;
-  line-height: 1.3;
-`;
-
-function getEmSize() {
-  // Create a temporary element to measure em size
-  const tempEl = document.createElement('div');
-  tempEl.style.cssText = `
-    position: absolute;
-    visibility: hidden;
-    width: 1em;
-    height: 1em;
-  `;
-  document.body.appendChild(tempEl);
-  const emSize = tempEl.offsetWidth;
-  document.body.removeChild(tempEl);
-  return emSize;
-}
-
-function getRemSize() {
-  // Create a temporary element to measure rem size (relative to root)
-  const tempEl = document.createElement('div');
-  tempEl.style.cssText = `
-    position: absolute;
-    visibility: hidden;
-    width: 1rem;
-    height: 1rem;
-  `;
-  document.body.appendChild(tempEl);
-  const remSize = tempEl.offsetWidth;
-  document.body.removeChild(tempEl);
-  return remSize;
-}
-
-function getSloganBottom() {
-  const sloganEl = document.getElementById('slogan');
-  if (!sloganEl) return 'N/A';
-  
-  const computedStyle = window.getComputedStyle(sloganEl);
-  return computedStyle.bottom;
-}
-
-function updateVW() {
-  const vw = window.innerWidth / 100; // 1vw in pixels
-  const currentVW = window.innerWidth;
-  const emSize = getEmSize();
-  const remSize = getRemSize();
-  const sloganBottom = getSloganBottom();
-  
-  vwDisplay.innerHTML = `
-    ${currentVW}px<br>
-    1vw = ${vw.toFixed(2)}px<br>
-    1em = ${emSize}px<br>
-    1rem = ${remSize}px<br>
-    #slogan bottom: ${sloganBottom}
-  `;
-}
-
-document.body.appendChild(vwDisplay);
-updateVW();
-window.addEventListener('resize', updateVW);
-*/	
-	
-	
 </script>
 
 </body>
 </html>
-
-
